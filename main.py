@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-from statistics import mode
-import ev3dev.ev3 as ev3
 from time import sleep
 
 import config
@@ -33,13 +31,12 @@ ts = TouchSensor(INPUT_4)
 # define data-unit:
 #-------------------------------------------------------------#
 
-us.mode = 'US-DIST-CM'
-gy.mode = 'GYRO-ANG'
+us.MODE_US_DIST_CM
+gy.MODE_GYRO_ANG
+#lsl.MODE_REFLECT
+lsr.MODE_REFLECT
+ts.MODE_TOUCH
 
-lsr.mode = 'REFLECT' 
-#lsl.mode = 'REFLECT'
-
-ts.mode = 'TOUCH'
 #-------------------------------------------------------------#
 # Check and validate sensor connection: (VIRKER IKKE I ev3dev2)
 #-------------------------------------------------------------#
