@@ -7,7 +7,7 @@ import motor
 from ev3dev2.motor import LargeMotor, OUTPUT_A, OUTPUT_B, OUTPUT_C, OUTPUT_D, SpeedPercent, MediumMotor
 from ev3dev2.sensor import INPUT_1, INPUT_2, INPUT_3, INPUT_4
 
-from ev3dev2.sensor.lego import TouchSensor, ButtonBase, GyroSensor, LightSensor, UltrasonicSensor, ColorSensor 
+from ev3dev2.sensor.lego import TouchSensor, GyroSensor, LightSensor, UltrasonicSensor, ColorSensor 
 
 
 
@@ -56,7 +56,7 @@ ts.MODE_TOUCH
 
 while True:
 
-
+    
     #mB.run_forever(speed_sp=config.BASE_SPEED)
     #mA.run_forever(speed_sp=config.BASE_SPEED)
     
