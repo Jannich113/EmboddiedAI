@@ -1,51 +1,47 @@
 #!/usr/bin/env python3
-
-from multiprocessing.connection import wait
+from statistics import mode
 import ev3dev.ev3 as ev3
 from time import sleep
 
 import config
-import signal
-# not necesseary if using ev3dev
+import motor
 
-    #from ev3dev2.motor import LargeMotor, OUTPUT_A, OUTPUT_B, SpeedPercent, MoveTank 
-    #from ev3dev2.sensor import INPUT_1
+from ev3dev2.motor import LargeMotor, OUTPUT_A, OUTPUT_B, OUTPUT_C, OUTPUT_D, SpeedPercent, MediumMotor
+from ev3dev2.sensor import INPUT_1, INPUT_2, INPUT_3, INPUT_4
 
-    #from ev3dev2.sensor.lego import TouchSensor 
-    #from ev3dev2.sensor.lego import UltrasonicSensor
+from ev3dev2.sensor.lego import TouchSensor, ButtonBase, GyroSensor, LightSensor, UltrasonicSensor, ColorSensor 
+
+
 
 #-------------------------------------------------------------#
 # init I/O:
 #-------------------------------------------------------------#
 
+mLeft = LargeMotor(OUTPUT_A)
+mRight = LargeMotor(OUTPUT_B)
+mCenter = LargeMotor(OUTPUT_C)
+mGrip = MediumMotor(OUTPUT_D)
 
-btn = ev3.Button()
-
-mA = ev3.LargeMotor(ev3.OUTPUT_A)
-mB = ev3.LargeMotor(ev3.OUTPUT_B)
-
-us = ev3.UltrasonicSensor(ev3.INPUT_1)
-
-lsr = ev3.LightSensor(ev3.INPUT_3)
-lsl = ev3.LightSensor('int2')
-
-ts = ev3.TouchSensor('int1')
-
-gy = ev3.GyroSensor(ev3.INPUT_2)
+us = UltrasonicSensor(INPUT_1)
+gy = GyroSensor(INPUT_2)
+lsr = LightSensor(INPUT_3)
+#lsl = LightSensor(INPUT_4)
+ts = TouchSensor(INPUT_4)
 
 
 #-------------------------------------------------------------#
-# define SI-unit:
+# define data-unit:
 #-------------------------------------------------------------#
 
-us.MODE_US_DIST_CM 
+us.mode = 'US-DIST-CM'
+gy.mode = 'GYRO-ANG'
 
-gy.MODE_GYRO_ANG
+lsr.mode = 'REFLECT' 
+#lsl.mode = 'REFLECT'
 
-lsr.MODE_REFLECT
-
+ts.mode = 'TOUCH'
 #-------------------------------------------------------------#
-# Check and validate sensor connection:
+# Check and validate sensor connection: (VIRKER IKKE I ev3dev2)
 #-------------------------------------------------------------#
 
 #assert us.connected, "Ultrasound sensor is not connected"
@@ -63,8 +59,10 @@ lsr.MODE_REFLECT
 
 while True:
 
-    #mA.run_forever(speed_sp=config.BASE_SPEED) 
-    #mB.duty_cycle_sp = config.BASE_SPEED
+
+    #mB.run_forever(speed_sp=config.BASE_SPEED)
+    #mA.run_forever(speed_sp=config.BASE_SPEED)
+    
     #ts_val = ts.value()
     #ev3.Sound.speak('Running')
     #sleep(5)
@@ -84,8 +82,8 @@ while True:
         #print(str(dis)) 
     #ang = gy.value()/config.FRACTION
     #print(ang)
-    refl = lsr.value()
-    print(refl)
+    #refl = lsr.value()
+    #print(refl)
 
 #-------------------------------------------------------------#
 # END OF DOCUMENT 
