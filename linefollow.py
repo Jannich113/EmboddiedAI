@@ -1,4 +1,4 @@
-
+import config
 
 def follow_line_motor_pid():
 
@@ -7,9 +7,11 @@ def follow_line_motor_pid():
 
 
 robotSpeed = 150 # mm/sec
-distance =     
+distance = 1000 #   
+ANG_Straight = 90
 
-def Drive_straight(gy ):
-    gy.reset_angle(0)
-    
+def Drive_straight(gy, lsr):
 
+
+    if gy.value < ANG_Straight: # move forward
+        

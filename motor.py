@@ -1,6 +1,6 @@
 from ev3dev2.motor import LargeMotor, OUTPUT_A, OUTPUT_B
 
-import config
+import config as c
 import main
 
 

@@ -7,20 +7,30 @@
 #-------------------------------------------------------------#
 # Motor: 
 #-------------------------------------------------------------#
+# negative value = forward drive
+# positive value = backward drive
+#-------------------------------------------------------------#
 
 THRESHOLD_LEFT = 30
 THRESHOLD_RIGHT = 350
-BASE_SPEED = 255
+BASE_SPEED = -255
 ZERO_SPEED = 0
-TURN_SPEED = 50
+TURN_SPEED = -50
 
 
 #-------------------------------------------------------------#
 # Ultrasonic sensor:
 #-------------------------------------------------------------#
 
-DIST_IGNORE = 50
+DIST_IGNORE = 5 # cm
 FRACTION = 10
+
+# degress values
+FARRIGHT = 25
+LESSRIGHT = [25, 65]
+MIDDEL = [65, 115]
+LESSLEFT = [115, 160]
+FARLEFT = 160  
 
 #-------------------------------------------------------------#
 # Color sensor:
