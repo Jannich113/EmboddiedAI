@@ -24,32 +24,30 @@ def main():
     spkr.play_boot()  # play boot sound
 
 
-    while True:
-        1+1 # do nothing
-        #mB.run_forever(speed_sp=config.BASE_SPEED)
-        #mA.run_forever(speed_sp=config.BASE_SPEED)
-        
-        #ts_val = ts.value()
-        #ev3.Sound.speak('Running')
-        #sleep(5)
-        #ev3.Sound.speak('Stopping')
-        #mA.stop()
-        #sleep(5)
-        #m2.duty_cycle_sp = config.BASE_SPEED
-        
 
-        #if ts_val == 1:
-            #ev3.Sound.beep().wait()
-            #mA.duty_cycle_sp = config.ZERO_SPEED
-            #mB.duty_cycle_sp = config.ZERO_SPEED
-            #exit()
-        #else:
-            #dis = us.value()/config.FRACTION
-            #print(str(dis)) 
-        #ang = gy.value()/config.FRACTION
-        #print(ang)
-        #refl = lsr.value()
-        #print(refl)
+    #-------------------------------------------------------------#
+    # Super loop
+    #-------------------------------------------------------------#
+    while True:
+        sensors.update(motors)  # update sensor values at start of each loop
+        
+        #-------------------------------------------------------------#
+        # Behavior selection
+        #-------------------------------------------------------------#
+
+
+        #-------------------------------------------------------------#
+        # Behavior execution
+        #-------------------------------------------------------------#
+
+        #-------------------------------------------------------------#
+        # Sleep
+        #-------------------------------------------------------------#
+        #sleep(config.SLEEP_TIME)  # sleep for sepcified time in config.py
+
+        #-------------------------------------------------------------#
+        # End of loop
+        #-------------------------------------------------------------#
 
 
 if __name__ == "__main__":
