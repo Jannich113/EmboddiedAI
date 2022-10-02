@@ -1,19 +1,17 @@
 #!/usr/bin/env python3
+from ast import main
+from operator import truediv
 from time import sleep
 
-import config, motor, sensor, speaker
-
-
-from ev3dev2.sensor import INPUT_1, INPUT_2, INPUT_3, INPUT_4
-
-from ev3dev2.sensor.lego import TouchSensor, ButtonBase, GyroSensor, LightSensor, UltrasonicSensor, ColorSensor 
-
-
-
+import config
+import src.motor as motor
+import src.sensor as sensor
+import src.speaker as speaker
 
 #-------------------------------------------------------------#
 # main program: 
 #-------------------------------------------------------------#
+
 def main():
     
     #-------------------------------------------------------------#
@@ -27,6 +25,7 @@ def main():
 
 
     while True:
+        1+1 # do nothing
         #mB.run_forever(speed_sp=config.BASE_SPEED)
         #mA.run_forever(speed_sp=config.BASE_SPEED)
         
