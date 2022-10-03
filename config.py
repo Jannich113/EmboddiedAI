@@ -6,10 +6,15 @@ from ev3dev2.wheel import EV3EducationSetTire
 #-------------------------------------------------------------#
 
 #-------------------------------------------------------------#
+# Lego specific parameters
+#-------------------------------------------------------------#
+STUD_MM = 8 #Distance between two lego studs
+
+#-------------------------------------------------------------#
 # Input ports    
 #-------------------------------------------------------------#
-SENSOR_LIGHT_RIGHT_PORT = INPUT_1
-SENSOR_LIGHT_LEFT_PORT = INPUT_2
+SENSOR_LIGHT_LEFT_PORT = INPUT_1
+SENSOR_LIGHT_RIGHT_PORT = INPUT_2
 SENSOR_ULTRASOUND_PORT = INPUT_3
 SENSOR_TOUCH_PORT = INPUT_4
 #SENSOR_GYRO_PORT = INPUT_x
@@ -19,8 +24,8 @@ SENSOR_TOUCH_PORT = INPUT_4
 #-------------------------------------------------------------#
 MOTOR_LEFT_PORT = OUTPUT_A
 MOTOR_RIGHT_PORT = OUTPUT_B
-MOTOR_GRIPPER_PORT = OUTPUT_C
-MOTOR_ULTRASOUND_PORT = OUTPUT_D
+MOTOR_ULTRASOUND_PORT = OUTPUT_C
+MOTOR_GRIPPER_PORT = OUTPUT_D
 
 #-------------------------------------------------------------#
 # Motor: 
@@ -60,7 +65,14 @@ MODE_TOUCH = 'TOUCH'
 #-------------------------------------------------------------#
 # Wheels:
 #-------------------------------------------------------------#
-tire = EV3EducationSetTire()
+TIRE = EV3EducationSetTire
+TIRE_DIST = 15 * STUD_MM # Distance between center of the wheels
+
+#-------------------------------------------------------------#
+# Gripper:
+#-------------------------------------------------------------#
+GRIPPER_ROTS = 7 # Number of rotations to open/close the gripper
+GRIPPER_SPD_PERCENTAGE = 100 # Speed of the gripper motor in percentage
 
 #-------------------------------------------------------------#
 # Main loop parameters:
