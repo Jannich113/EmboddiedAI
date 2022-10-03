@@ -1,88 +1,73 @@
 #!/usr/bin/env python3
+from operator import truediv
 from time import sleep
 
 import config
-import motor
-
-from ev3dev2.motor import LargeMotor, OUTPUT_A, OUTPUT_B, OUTPUT_C, OUTPUT_D, SpeedPercent, MediumMotor
-from ev3dev2.sensor import INPUT_1, INPUT_2, INPUT_3, INPUT_4
-
-from ev3dev2.sensor.lego import TouchSensor, ButtonBase, GyroSensor, LightSensor, UltrasonicSensor, ColorSensor 
-
+import src.motor as motor
+import src.sensor as sensor
+import src.speaker as speaker
+import src.dDrive as dDrive
+from ev3dev2.motor import SpeedRPM
 
 
 #-------------------------------------------------------------#
-# init I/O:
+# main program: 
 #-------------------------------------------------------------#
 
-mLeft = LargeMotor(OUTPUT_A)
-mRight = LargeMotor(OUTPUT_B)
-mCenter = LargeMotor(OUTPUT_C)
-mGrip = MediumMotor(OUTPUT_D)
-
-us = UltrasonicSensor(INPUT_1)
-gy = GyroSensor(INPUT_2)
-lsr = LightSensor(INPUT_3)
-#lsl = LightSensor(INPUT_4)
-ts = TouchSensor(INPUT_4)
-
-
-#-------------------------------------------------------------#
-# define data-unit:
-#-------------------------------------------------------------#
-
-us.MODE_US_DIST_CM
-gy.MODE_GYRO_ANG
-#lsl.MODE_REFLECT
-lsr.MODE_REFLECT
-ts.MODE_TOUCH
-
-#-------------------------------------------------------------#
-# Check and validate sensor connection: (VIRKER IKKE I ev3dev2)
-#-------------------------------------------------------------#
-
-#assert us.connected, "Ultrasound sensor is not connected"
-#assert lsr.connected, "Lightsensor RIGHT is npt connected" 
-#assert lsl.connected, "LIghtsensor LEFT is not connected"
-#assert ts.connected, "Touchsensor is not connected"
-#assert mA.connected, "Motor A not connected"
-#assert mB.connected, "Motor B not connected"
-#assert gy.connected, "Gyrosensor is not connected"
-
-#-------------------------------------------------------------#
-# main program: Test program
-#-------------------------------------------------------------#
-#-------------------------------------------------------------#
-
-while True:
-
-
-    #mB.run_forever(speed_sp=config.BASE_SPEED)
-    #mA.run_forever(speed_sp=config.BASE_SPEED)
+def main():
     
-    #ts_val = ts.value()
-    #ev3.Sound.speak('Running')
-    #sleep(5)
-    #ev3.Sound.speak('Stopping')
-    #mA.stop()
-    #sleep(5)
-    #m2.duty_cycle_sp = config.BASE_SPEED
-    
+    #-------------------------------------------------------------#
+    # init I/O
+    #-------------------------------------------------------------#
+    motors = motor.Motor()  # init motors with custom motor class
+    diffDrive = dDrive.DDrive() # init differential dirve
+    sensors = sensor.Sensor()  # init sensors with custom sensor class
+    sensors.initialize()  # initialize sensors with modes specified in config.py
+    spkr = speaker.Speaker()  # init speaker with custom speaker class
+    spkr.play_boot()  # play boot sound
 
-    #if ts_val == 1:
-        #ev3.Sound.beep().wait()
-        #mA.duty_cycle_sp = config.ZERO_SPEED
-        #mB.duty_cycle_sp = config.ZERO_SPEED
-        #exit()
-    #else:
-        #dis = us.value()/config.FRACTION
-        #print(str(dis)) 
-    #ang = gy.value()/config.FRACTION
-    #print(ang)
-    #refl = lsr.value()
-    #print(refl)
+
+
+    #-------------------------------------------------------------#
+    # Super loop
+    #-------------------------------------------------------------#
+    #diffDrive.mDiff.on_arc_left(SpeedRPM(40),200,1256)
+    
+    
+    while True:
+        sensors.update(motors)  # update sensor values at start of each loop
+
+        #-------------------------------------------------------------#
+        # Test of gripper close
+        #-------------------------------------------------------------#
+        if (sensors.tVal == 1):
+            spkr.beep()
+            motors.closeGripper()
+            motors.openGripper()
+
+        #-------------------------------------------------------------#
+        # Behavior selection
+        #-------------------------------------------------------------#
+        
+
+        #-------------------------------------------------------------#
+        # Behavior execution
+        #-------------------------------------------------------------#
+
+        #-------------------------------------------------------------#
+        # Sleep
+        #-------------------------------------------------------------#
+        sleep(config.SLEEP_TIME)  # sleep for sepcified time in config.py
+
+        #-------------------------------------------------------------#
+        # End of loop
+        #-------------------------------------------------------------#
+
+
+if __name__ == "__main__":
+    main()
+
 
 #-------------------------------------------------------------#
 # END OF DOCUMENT 
 #-------------------------------------------------------------#
-
