@@ -7,6 +7,7 @@ import src.motor as motor
 import src.sensor as sensor
 import src.speaker as speaker
 import src.dDrive as dDrive
+import src.lineFollow as lineFollow
 from ev3dev2.motor import SpeedRPM
 
 
@@ -24,14 +25,15 @@ def main():
     sensors = sensor.Sensor()  # init sensors with custom sensor class
     sensors.initialize()  # initialize sensors with modes specified in config.py
     spkr = speaker.Speaker()  # init speaker with custom speaker class
-    spkr.play_boot()  # play boot sound
-
+    #spkr.play_boot()  # play boot sound
+    spkr.speaker.play_file('dtmf.wav')
+    linFol = lineFollow.LnFwl(sensors, diffDrive, spkr) # init line following with sensor and differential drive objects
+    linFol.initialize() # initialize line following
 
 
     #-------------------------------------------------------------#
     # Super loop
     #-------------------------------------------------------------#
-    #diffDrive.mDiff.on_arc_left(SpeedRPM(40),200,1256)
     
     
     while True:
@@ -53,6 +55,8 @@ def main():
         #-------------------------------------------------------------#
         # Behavior execution
         #-------------------------------------------------------------#
+        linFol.sm.nextState() # update state machine
+
 
         #-------------------------------------------------------------#
         # Sleep
