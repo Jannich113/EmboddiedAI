@@ -7,6 +7,7 @@ import src.motor as motor
 import src.sensor as sensor
 import src.speaker as speaker
 import src.dDrive as dDrive
+import src.objectAvoidance as ObjAvoid
 from ev3dev2.motor import SpeedRPM
 
 
@@ -25,6 +26,7 @@ def main():
     sensors.initialize()  # initialize sensors with modes specified in config.py
     spkr = speaker.Speaker()  # init speaker with custom speaker class
     spkr.play_boot()  # play boot sound
+    objAvoid = ObjAvoid.objectAvoidance()
 
 
 
@@ -36,7 +38,7 @@ def main():
     
     while True:
         sensors.update(motors)  # update sensor values at start of each loop
-
+        objAvoid.detect(sensors)
         #-------------------------------------------------------------#
         # Test of gripper close
         #-------------------------------------------------------------#
