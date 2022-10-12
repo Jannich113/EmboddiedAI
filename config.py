@@ -39,49 +39,19 @@ THRESHOLD_RIGHT = 350
 BASE_SPEED = -255
 ZERO_SPEED = 0
 TURN_SPEED = 50
-TURN_SPEED_US = 20
+
 
 #-------------------------------------------------------------#
 # Ultrasonic sensor:
 #-------------------------------------------------------------#
 MODE_ULTRASOUND = 'US-DIST-CM'
-DIST_IGNORE = 50
-FRACTION = 10
+DIST_IGNORE = 500
+DIST_MAXED_OUT = 2550
 
-# degress values
-FARRIGHT = 25
-LESSRIGHT = [25, 65]
-MIDDEL = [65, 115]
-LESSLEFT = [115, 160]
-FARLEFT = 160  
+MAX_DEGRESS = 65
+DEGRESS_STEP = 1
 
-# degress values
-FARRIGHT = 25
-LESSRIGHT = [25, 65]
-MIDDEL = [65, 115]
-LESSLEFT = [115, 160]
-FARLEFT = 160  
-
-
-POSITIONS = [-75, -45, -30, 0, 30, 45, 75]
-
-#+- 75 degress from 0
-# Turn angles illustrated
-#-
-#----* -75
-#------* 
-#---------
-#------------* -30
-#---------------
-#----------------* 0
-#--------------- 
-#------------* + 30
-#---------
-#------* 
-#----* +75
-#-
-
-
+TURN_SPEED_US = 40
 
 #-------------------------------------------------------------#
 # Color sensor:
