@@ -32,7 +32,7 @@ class DDrive:
     
     # Move a bit forward
     def moveABitForward(self):
-        self.mDiff.on_for_distance(config.MOVESPD, config.MOVESHORTDIST)
+        self.mDiff.on_for_distance(config.MOVESLOWSPD, config.MOVESHORTDIST)
 
     # Stop
     def stop(self):

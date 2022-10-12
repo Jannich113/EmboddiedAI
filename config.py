@@ -34,9 +34,10 @@ MOTOR_GRIPPER_PORT = OUTPUT_D
 TURNLITTLESPD = SpeedPercent(-10)    # speed for turning a little
 TURNLITTLEANGLE = 5                # angle for turning a little
 TURNMORESPD = SpeedPercent(-10)      # speed for turning more
-TURNMOREANGLE = 10                  # angle for turning more
-MOVESPD = SpeedPercent(-30)          # speed for moving
-MOVESHORTDIST = 10                  # distance for moving a bit forward (mm)
+TURNMOREANGLE = 5                  # angle for turning more
+MOVESPD = SpeedPercent(-20)          # speed for moving
+MOVESLOWSPD = SpeedPercent(-5)      # speed for moving slow
+MOVESHORTDIST = 2                  # distance for moving a bit forward (mm)
 
 #-------------------------------------------------------------#
 # Ultrasonic sensor:

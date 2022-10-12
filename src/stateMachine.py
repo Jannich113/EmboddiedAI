@@ -27,6 +27,7 @@ class StateMachine:
     
     def nextState(self):
         newState = self.handler()
+        print("State is: ", newState)
         if newState.upper() in self.endStates:
             print("reached ", newState) 
         else:

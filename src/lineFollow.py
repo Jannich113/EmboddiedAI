@@ -51,7 +51,7 @@ class LnFwl:
             newState = "TURN_MORE_LEFT"
         
         # Left sensor sees black
-        if (self.sensor.lSeesBlack):
+        elif (self.sensor.lSeesBlack):
             # Turn a little more right
             self.dDrive.turnLittleLeft()
             
@@ -74,7 +74,7 @@ class LnFwl:
             newState = "TURN_MORE_RIGHT"
         
         # Right sensor sees black
-        if(self.sensor.rSeesBlack):
+        elif(self.sensor.rSeesBlack):
             # Turn a little more left
             self.dDrive.turnLittleRight()
 
@@ -95,47 +95,54 @@ class LnFwl:
         if (self.sensor.lSeesBlack and self.sensor.rSeesBlack):
             # Turn a little more left
             self.dDrive.turnMoreLeft()
-            newState = "TURN_MORE_LEFt"
+            newState = "TURN_MORE_LEFT"
         
         # Right sensor sees black
-        if (self.sensor.rSeesBlack):
-            newState = "TURN_RIGHT"
+        elif (self.sensor.rSeesBlack):
+            self.dDrive.moveABitForward()
+            newState = "TURN_MORE_LEFT"
 
         # Left sensor sees black
         elif (self.sensor.lSeesBlack):
-            newState = "TURN_LEFT"
+            # Turn a little more left
+            self.dDrive.turnMoreLeft()
+            newState = "TURN_MORE_LEFT"
         
         # Neither sensor sees black
         else:
-            newState = "STOP"
+            newState = "FORWARD"
         
         return newState
 
     def turn_more_right_transition(self):
-        # # Both sensors see black
+        #Both sensors see black
         if (self.sensor.lSeesBlack and self.sensor.rSeesBlack):
+            # Turn a little more left
             self.dDrive.turnMoreRight()
             newState = "TURN_MORE_RIGHT"
         
-        # Right sensor sees black
-        if (self.sensor.rSeesBlack):
-            self.dDrive.moveABitForward()
-            newState = "TURN_RIGHT"
-
         # Left sensor sees black
         elif (self.sensor.lSeesBlack):
-            newState = "TURN_LEFT"
+            self.dDrive.moveABitForward()
+            newState = "TURN_MORE_RIGHT"
+
+        # RIGHT sensor sees black
+        elif (self.sensor.lSeesBlack):
+            # Turn a little more right
+            self.dDrive.turnMoreRight()
+            newState = "TURN_MORE_RIGHT"
         
-        # Neither sensor sees 
+        # Neither sensor sees black
         else:
-            newState = "STOP"
+            newState = "FORWARD"
         
         return newState
 
     def stop_transitions(self):
         newState = "STOP"
         self.dDrive.stop()
-        sys.exit()
+        while True:
+            1+1
         return newState
     
     def initialize(self):
