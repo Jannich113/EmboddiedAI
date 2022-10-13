@@ -1,10 +1,8 @@
-from cProfile import label
-from statistics import linear_regression
-from turtle import color
 import numpy as np
 from sklearn.linear_model import RANSACRegressor, LinearRegression
 from sklearn.metrics import r2_score
 import matplotlib.pyplot as plt
+import config
 
 
 
@@ -14,8 +12,7 @@ class RANSAC():
     def __init__(self,data_X,data_y) -> None:
         self.X = data_X
         self.y = data_y
-
-
+        
 
     def LinearReg(self):
         # init 
@@ -30,7 +27,7 @@ class RANSAC():
 
     def RansacReg(self):
         #init ransac
-        Ransac = RANSACRegressor()
+        Ransac = RANSACRegressor(residual_threshold=config.THRESHOLD_FOR_INLIERS, min_samples= )
 
         Ransac.fit(self.X, self.y)
 
