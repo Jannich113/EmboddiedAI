@@ -1,8 +1,8 @@
+from copy import copy
 from time import sleep
 import config 
 import src.sensor as sensor
 import src.motor as motor
-import math
 import csv
 import numpy as np
 
@@ -11,8 +11,8 @@ class objectDetection:
      
     def __init__(self, m: motor.Motor):
         self.mtr = m
-        self.posCount = 0
-        self.objLIst = []
+        self.pt = 0
+        self.objLIst
 
 
     def turnSensor(self, angle: int): 
@@ -45,6 +45,50 @@ class objectDetection:
     def convertToCoordinat(degrees, dist):
         sol = [dist * np.cos(np.radians(degrees)), dist *np.sin(np.radians(degrees))]
         return sol
+
+    def findClosetsPoints(self):
+        pointList = copy(self.objLIst)
+        Points_Fund = False
+
+        while not(Points_Fund):
+
+            # add functionality to remove old estimate of corret point
+            # for points in list find the closets point 
+            point = [0, config.DIST_IGNORE]
+            index_of_point = 0
+            for p in pointList:
+                if p[1] <= config.DIST_IGNORE:
+                    if p[1] < point[1]:
+                        point = p
+                        index_of_point = pointList.index(p)
+
+            # check left side for close pairs 
+            leftList = []
+            for p in pointList[:index_of_point]:
+                if abs(p[1] - point[1]) <= config.TOLERATED_DIV:
+                    leftList.append(p)
+            
+            # check right side for close pairs
+            rightList = []
+            for p in pointList[index_of_point:]:
+                if abs(p[1] - point[1]) <= config.TOLERATED_DIV:
+                    rightList.append(p)
+
+            # combine list of found pair points
+            c = []
+            c.extend(leftList)
+            c.append(point)
+            c.extend(rightList)
+
+            if len(c) >= config.NEEDED_POINTS:
+                Points_Fund = True
+                middleIndex = (len(c)-1)/2
+                self.pt = c[middleIndex]
+            else:
+                
+
+
+            
 
 
         
