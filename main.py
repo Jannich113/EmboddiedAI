@@ -21,7 +21,7 @@ def main():
     # init I/O
     #-------------------------------------------------------------#
     motors = motor.Motor()  # init motors with custom motor class
-    diffDrive = dDrive.DDrive() # init differential dirve
+    #diffDrive = dDrive.DDrive() # init differential dirve
     sensors = sensor.Sensor()  # init sensors with custom sensor class
     sensors.initialize()  # initialize sensors with modes specified in config.py
     spkr = speaker.Speaker()  # init speaker with custom speaker class
@@ -47,7 +47,11 @@ def main():
         if coun == 1:
             objAvoid.detect(sensors)
             spkr.speak("done printing")
-            objAvoid.turnSensor(64)
+            #objAvoid.turnSensor(64)
+            objAvoid.findClosetsPoints()
+            print('fund middle value ')
+            print(objAvoid.pt)
+            spkr.speak(str(objAvoid.pt))
 
         coun = 2
        
@@ -62,7 +66,7 @@ def main():
         #-------------------------------------------------------------#
         # Behavior selection
         #-------------------------------------------------------------#
-        
+
 
         #-------------------------------------------------------------#
         # Behavior execution

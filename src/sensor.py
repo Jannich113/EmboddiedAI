@@ -4,10 +4,10 @@ import src.motor as motor
 
 class Sensor:
     def __init__(self):
-        self.sColorLeft  = ColorSensor(SENSOR_LIGHT_LEFT_PORT)
-        self.sColorRight = ColorSensor(SENSOR_LIGHT_RIGHT_PORT)
+        #self.sColorLeft  = ColorSensor(SENSOR_LIGHT_LEFT_PORT)
+        #self.sColorRight = ColorSensor(SENSOR_LIGHT_RIGHT_PORT)
         self.sUltrasound = UltrasonicSensor(SENSOR_ULTRASOUND_PORT)
-        self.sTouch = TouchSensor(SENSOR_TOUCH_PORT)
+        #self.sTouch = TouchSensor(SENSOR_TOUCH_PORT)
         #self.sGyro = GyroSensor(SENSOR_GYRO_PORT)
         self.uDist = 0 # distance in cm from ultrasonic sensor
         self.uAngle = 0 # angle in degrees from ultrasonic sensor
@@ -18,10 +18,10 @@ class Sensor:
         #self.gAng = 0 # angle from gyro sensor
     
     def initialize(self):
-        self.sColorLeft.mode = MODE_COLOR
-        self.sColorRight.mode = MODE_COLOR
+        #self.sColorLeft.mode = MODE_COLOR
+        #self.sColorRight.mode = MODE_COLOR
         self.sUltrasound.mode = MODE_ULTRASOUND
-        self.sTouch.mode = MODE_TOUCH
+        #self.sTouch.mode = MODE_TOUCH
         #self.sGyro.mode = MODE_GYRO
     
     def update(self, mtr: motor.Motor):

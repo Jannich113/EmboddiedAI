@@ -4,7 +4,7 @@ import config
 import src.sensor as sensor
 import src.motor as motor
 import csv
-import numpy as np
+#import numpy as np
 
 
 class objectDetection:
@@ -12,7 +12,7 @@ class objectDetection:
     def __init__(self, m: motor.Motor):
         self.mtr = m
         self.pt = 0
-        self.objLIst
+        self.objLIst = [None]*(2*config.MAX_DEGRESS)
 
 
     def turnSensor(self, angle: int): 
@@ -42,7 +42,7 @@ class objectDetection:
         return objects
 
 
-    def convertToCoordinat(degrees, dist):
+    #def convertToCoordinat(degrees, dist):
         sol = [dist * np.cos(np.radians(degrees)), dist *np.sin(np.radians(degrees))]
         return sol
 
@@ -50,8 +50,10 @@ class objectDetection:
         pointList = copy(self.objLIst)
         Points_Fund = False
 
+        # run until atleast a minimum of closets points are fund withing a STD from one another
         while not(Points_Fund):
-
+            print('start')
+            print(pointList)
             # add functionality to remove old estimate of corret point
             # for points in list find the closets point 
             point = [0, config.DIST_IGNORE]
@@ -61,6 +63,8 @@ class objectDetection:
                     if p[1] < point[1]:
                         point = p
                         index_of_point = pointList.index(p)
+                        print('closets point')
+                        print(point)
 
             # check left side for close pairs 
             leftList = []
@@ -74,18 +78,22 @@ class objectDetection:
                 if abs(p[1] - point[1]) <= config.TOLERATED_DIV:
                     rightList.append(p)
 
-            # combine list of found pair points
+            # Combine list of found pairs 
             c = []
             c.extend(leftList)
             c.append(point)
             c.extend(rightList)
+            print('close pairs')
+            print(c)
 
             if len(c) >= config.NEEDED_POINTS:
                 Points_Fund = True
-                middleIndex = (len(c)-1)/2
+                middleIndex = int((len(c)-1)/2)
                 self.pt = c[middleIndex]
             else:
-                
+                # remove noisy points thats not part of a line
+                for noise in c:
+                    pointList.remove(noise)
 
 
             

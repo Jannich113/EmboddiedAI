@@ -27,7 +27,7 @@ class RANSAC():
 
     def RansacReg(self):
         #init ransac
-        Ransac = RANSACRegressor(residual_threshold=config.THRESHOLD_FOR_INLIERS, min_samples= )
+        Ransac = RANSACRegressor(residual_threshold=config.THRESHOLD_FOR_INLIERS, min_samples=50 )
 
         Ransac.fit(self.X, self.y)
 
