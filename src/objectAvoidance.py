@@ -52,8 +52,8 @@ class objectDetection:
 
         # run until atleast a minimum of closets points are fund withing a STD from one another
         while not(Points_Fund):
-            print('start')
-            print(pointList)
+            #print('start')
+            #print(pointList)
             # add functionality to remove old estimate of corret point
             # for points in list find the closets point 
             point = [0, config.DIST_IGNORE]
@@ -63,8 +63,8 @@ class objectDetection:
                     if p[1] < point[1]:
                         point = p
                         index_of_point = pointList.index(p)
-                        print('closets point')
-                        print(point)
+                        #print('closets point')
+                        #print(point)
 
             # check left side for close pairs 
             leftList = []
@@ -83,8 +83,8 @@ class objectDetection:
             c.extend(leftList)
             c.append(point)
             c.extend(rightList)
-            print('close pairs')
-            print(c)
+            #print('close pairs')
+            #print(c)
 
             if len(c) >= config.NEEDED_POINTS:
                 Points_Fund = True
