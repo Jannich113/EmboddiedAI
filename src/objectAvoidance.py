@@ -63,28 +63,37 @@ class objectDetection:
                     if p[1] < point[1]:
                         point = p
                         index_of_point = pointList.index(p)
-                        #print('closets point')
-                        #print(point)
+                        print('closets point')
+                        print(point)
 
             # check left side for close pairs 
             leftList = []
+            leftindex = []
             for p in pointList[:index_of_point]:
                 if abs(p[1] - point[1]) <= config.TOLERATED_DIV:
                     leftList.append(p)
+                    leftindex.append(pointList.index(p))
             
             # check right side for close pairs
             rightList = []
+            rightindex = []
             for p in pointList[index_of_point:]:
                 if abs(p[1] - point[1]) <= config.TOLERATED_DIV:
                     rightList.append(p)
+                    rightindex.append(pointList.index(p))
 
             # Combine list of found pairs 
             c = []
             c.extend(leftList)
             c.append(point)
             c.extend(rightList)
-            #print('close pairs')
-            #print(c)
+            print('close pairs')
+            print(c)
+
+            i = []
+            i.extend(leftindex)
+            i.append(index_of_point)
+            i.extend(rightindex)
 
             if len(c) >= config.NEEDED_POINTS:
                 Points_Fund = True
@@ -92,9 +101,10 @@ class objectDetection:
                 self.pt = c[middleIndex]
             else:
                 # remove noisy points thats not part of a line
-                for noise in c:
-                    pointList.remove(noise)
+                for noise in i:
+                    del pointList[noise]
 
+            
 
             
 

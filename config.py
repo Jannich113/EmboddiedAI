@@ -35,13 +35,6 @@ MOTOR_GRIPPER_PORT = OUTPUT_D
 # positive value = backward drive
 #-------------------------------------------------------------#
 
-<<<<<<< HEAD
-THRESHOLD_LEFT = 30
-THRESHOLD_RIGHT = 350
-BASE_SPEED = -255
-ZERO_SPEED = 0
-TURN_SPEED = 50
-=======
 TURNLITTLESPD = SpeedPercent(10)    # speed for turning a little
 TURNLITTLEANGLE = 15                # angle for turning a little
 TURNMORESPD = SpeedPercent(10)      # speed for turning more
@@ -49,8 +42,6 @@ TURNMOREANGLE = 15                  # angle for turning more
 MOVESPD = SpeedPercent(-30)          # speed for moving
 MOVESLOWSPD = SpeedPercent(5)      # speed for moving slow
 MOVESHORTDIST = 2                  # distance for moving a bit forward (mm)
->>>>>>> dev-philip
-
 
 #-------------------------------------------------------------#
 # Ultrasonic sensor:
@@ -70,6 +61,10 @@ TURN_SPEED_US = 40
 #-------------------------------------------------------------#
 MODE_COLOR = 'COL-REFLECT'
 INTENSENTY_BLACK = 15
+
+# USED FOR DETECTION OF CAN
+RESCUE_INTENSETY = 15 
+
 
 #-------------------------------------------------------------#
 # Gyro sensor:
@@ -102,6 +97,12 @@ GRIPPER_SPD_PERCENTAGE = 100 # Speed of the gripper motor in percentage
 # the value choosen should consist with the SI unit of the Ultrasonic sensor
 THRESHOLD_FOR_INLIERS = 20 # mm = 2 cm
 MAX_ITERATIONS = 50 
+
+
+#-------------------------------------------------------------#
+# Orientation of robot:
+#-------------------------------------------------------------#
+ORIEN_COMPENSATION = 180 # degress
 
 
 #-------------------------------------------------------------#

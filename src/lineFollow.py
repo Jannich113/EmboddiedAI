@@ -6,7 +6,7 @@ import src.dDrive as dDrive
 import src.sensor as sensor
 import src.stateMachine as stateMachine
 import src.speaker as speaker
-import sys
+
 
 class LnFwl:
     def __init__(self, snsr: sensor.Sensor, dDr: dDrive.DDrive, spkr: speaker.Speaker):

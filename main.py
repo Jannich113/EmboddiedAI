@@ -9,6 +9,7 @@ import src.speaker as speaker
 import src.dDrive as dDrive
 import src.objectAvoidance as ObjAvoid
 import src.lineFollow as lineFollow
+import src.canRescue as can
 from ev3dev2.motor import SpeedRPM
 
 
@@ -28,11 +29,11 @@ def main():
     spkr = speaker.Speaker()  # init speaker with custom speaker class
     #spkr.play_boot()  # play boot sound
     objAvoid = ObjAvoid.objectDetection(motors)
-    spkr.speaker.play_file('dtmf.wav')
+    #spkr.speaker.play_file('dtmf.wav')
     #spkr.speaker.play_file('prank.wav')
     spkr.beep()
-    linFol = lineFollow.LnFwl(sensors, diffDrive, spkr) # init line following with sensor and differential drive objects
-    linFol.initialize() # initialize line following
+    #linFol = lineFollow.LnFwl(sensors, diffDrive, spkr) # init line following with sensor and differential drive objects
+    #linFol.initialize() # initialize line following
 
     coun =1
 
@@ -45,7 +46,7 @@ def main():
         #sensors.update(motors)  # update sensor values at start of each loop
 
         #sensors.update_all(motors)  # update sensor values at start of each loop
-        sensors.update_Color()      # update color sensor values
+        #sensors.update_Color()      # update color sensor values
         #-------------------------------------------------------------#
         # Test of US
         #-------------------------------------------------------------#
@@ -78,7 +79,7 @@ def main():
         #-------------------------------------------------------------#
         # Behavior execution
         #-------------------------------------------------------------#
-        linFol.sm.nextState() # update state machine
+        #linFol.sm.nextState() # update state machine
 
 
         #-------------------------------------------------------------#

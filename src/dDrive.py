@@ -9,6 +9,8 @@ class DDrive:
             config.MOTOR_RIGHT_PORT,
             config.TIRE,
             config.TIRE_DIST)
+        self.MOVEANGLE = 0
+        self.MOVEDIST = 0
 
     # Move forward
     def moveForward(self):
@@ -33,6 +35,14 @@ class DDrive:
     # Move a bit forward
     def moveABitForward(self):
         self.mDiff.on_for_distance(config.MOVESLOWSPD, config.MOVESHORTDIST)
+
+    # Move to a given angle
+    def turnForAngle(self):
+        self.mDiff.on_for_degrees(config.MOVESLOWSPD, self.MOVEANGLE)
+
+    # Move for a given distance
+    def moveForDist(self):
+        self.mDiff.on_for_distance(config.MOVESLOWSPD, self.MOVEDIST)
 
     # Stop
     def stop(self):
