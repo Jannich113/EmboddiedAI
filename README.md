@@ -5,6 +5,7 @@
 # install ev3dev
 pip install python-ev3dev2
 
+<<<<<<< HEAD
 
 # install sklearn 
 pip install -U scikit-learn
@@ -16,6 +17,8 @@ python3 -m pip show scikit-learn
 
 
 
+=======
+>>>>>>> dev-philip
 # add extension 'ev3dev device browser' in vscode
 
 # Choose files to exclude when uploading to EV3

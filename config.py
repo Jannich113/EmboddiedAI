@@ -1,4 +1,4 @@
-from ev3dev2.motor import OUTPUT_A, OUTPUT_B, OUTPUT_C, OUTPUT_D
+from ev3dev2.motor import OUTPUT_A, OUTPUT_B, OUTPUT_C, OUTPUT_D, SpeedPercent
 from ev3dev2.sensor import INPUT_1, INPUT_2, INPUT_3, INPUT_4
 from ev3dev2.wheel import EV3EducationSetTire
 #-------------------------------------------------------------#
@@ -29,17 +29,27 @@ MOTOR_ULTRASOUND_PORT = OUTPUT_C
 MOTOR_GRIPPER_PORT = OUTPUT_D
 
 #-------------------------------------------------------------#
-# Motor: 
+# Motor / Diff drive: 
 #-------------------------------------------------------------#
 # negative value = forward drive
 # positive value = backward drive
 #-------------------------------------------------------------#
 
+<<<<<<< HEAD
 THRESHOLD_LEFT = 30
 THRESHOLD_RIGHT = 350
 BASE_SPEED = -255
 ZERO_SPEED = 0
 TURN_SPEED = 50
+=======
+TURNLITTLESPD = SpeedPercent(10)    # speed for turning a little
+TURNLITTLEANGLE = 15                # angle for turning a little
+TURNMORESPD = SpeedPercent(10)      # speed for turning more
+TURNMOREANGLE = 15                  # angle for turning more
+MOVESPD = SpeedPercent(-30)          # speed for moving
+MOVESLOWSPD = SpeedPercent(5)      # speed for moving slow
+MOVESHORTDIST = 2                  # distance for moving a bit forward (mm)
+>>>>>>> dev-philip
 
 
 #-------------------------------------------------------------#
@@ -59,7 +69,7 @@ TURN_SPEED_US = 40
 # Color sensor:
 #-------------------------------------------------------------#
 MODE_COLOR = 'COL-REFLECT'
-THRESHOLD_BLACK = 200
+INTENSENTY_BLACK = 15
 
 #-------------------------------------------------------------#
 # Gyro sensor:
@@ -77,12 +87,12 @@ MODE_TOUCH = 'TOUCH'
 # Wheels:
 #-------------------------------------------------------------#
 TIRE = EV3EducationSetTire
-TIRE_DIST = 15 * STUD_MM # Distance between center of the wheels
+TIRE_DIST = 120 # Distance between center of the wheels in mm
 
 #-------------------------------------------------------------#
 # Gripper:
 #-------------------------------------------------------------#
-GRIPPER_ROTS = 7 # Number of rotations to open/close the gripper
+GRIPPER_ROTS = 6 # Number of rotations to open/close the gripper
 GRIPPER_SPD_PERCENTAGE = 100 # Speed of the gripper motor in percentage
 
 #-------------------------------------------------------------#

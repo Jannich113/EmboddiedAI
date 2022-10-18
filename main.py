@@ -7,7 +7,11 @@ import src.motor as motor
 import src.sensor as sensor
 import src.speaker as speaker
 import src.dDrive as dDrive
+<<<<<<< HEAD
 import src.objectAvoidance as ObjAvoid
+=======
+import src.lineFollow as lineFollow
+>>>>>>> dev-philip
 from ev3dev2.motor import SpeedRPM
 
 
@@ -26,19 +30,31 @@ def main():
     sensors.initialize()  # initialize sensors with modes specified in config.py
     spkr = speaker.Speaker()  # init speaker with custom speaker class
     #spkr.play_boot()  # play boot sound
+<<<<<<< HEAD
     objAvoid = ObjAvoid.objectDetection(motors)
+=======
+    spkr.speaker.play_file('dtmf.wav')
+    #spkr.speaker.play_file('prank.wav')
+    spkr.beep()
+    linFol = lineFollow.LnFwl(sensors, diffDrive, spkr) # init line following with sensor and differential drive objects
+    linFol.initialize() # initialize line following
+>>>>>>> dev-philip
 
     coun =1
 
     #-------------------------------------------------------------#
     # Super loop
     #-------------------------------------------------------------#
-    #diffDrive.mDiff.on_arc_left(SpeedRPM(40),200,1256)
     
     
     while True:
+<<<<<<< HEAD
         #sensors.update(motors)  # update sensor values at start of each loop
 
+=======
+        #sensors.update_all(motors)  # update sensor values at start of each loop
+        sensors.update_Color()      # update color sensor values
+>>>>>>> dev-philip
         #-------------------------------------------------------------#
         # Test of US
         #-------------------------------------------------------------#
@@ -71,6 +87,8 @@ def main():
         #-------------------------------------------------------------#
         # Behavior execution
         #-------------------------------------------------------------#
+        linFol.sm.nextState() # update state machine
+
 
         #-------------------------------------------------------------#
         # Sleep
