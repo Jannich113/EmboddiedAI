@@ -31,12 +31,12 @@ MOTOR_GRIPPER_PORT = OUTPUT_D
 # Motor / Diff drive: 
 #-------------------------------------------------------------#
 
-TURNLITTLESPD = SpeedPercent(-10)    # speed for turning a little
-TURNLITTLEANGLE = 5                # angle for turning a little
-TURNMORESPD = SpeedPercent(-10)      # speed for turning more
-TURNMOREANGLE = 5                  # angle for turning more
-MOVESPD = SpeedPercent(-20)          # speed for moving
-MOVESLOWSPD = SpeedPercent(-5)      # speed for moving slow
+TURNLITTLESPD = SpeedPercent(10)    # speed for turning a little
+TURNLITTLEANGLE = 15                # angle for turning a little
+TURNMORESPD = SpeedPercent(10)      # speed for turning more
+TURNMOREANGLE = 15                  # angle for turning more
+MOVESPD = SpeedPercent(-30)          # speed for moving
+MOVESLOWSPD = SpeedPercent(5)      # speed for moving slow
 MOVESHORTDIST = 2                  # distance for moving a bit forward (mm)
 
 #-------------------------------------------------------------#
@@ -73,7 +73,7 @@ TIRE_DIST = 120 # Distance between center of the wheels in mm
 #-------------------------------------------------------------#
 # Gripper:
 #-------------------------------------------------------------#
-GRIPPER_ROTS = 7 # Number of rotations to open/close the gripper
+GRIPPER_ROTS = 6 # Number of rotations to open/close the gripper
 GRIPPER_SPD_PERCENTAGE = 100 # Speed of the gripper motor in percentage
 
 #-------------------------------------------------------------#

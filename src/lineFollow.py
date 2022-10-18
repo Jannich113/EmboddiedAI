@@ -156,3 +156,12 @@ class LnFwl:
         self.sm.set_start("START")
         self.sm.run()
 
+class LineFollow_Single:
+    def __init__(self, snsr: sensor.Sensor, dDr: dDrive.DDrive, spkr: speaker.Speaker):
+        self.sm = stateMachine.StateMachine()   # state machine for line following
+        self.dDrive = dDr                       # differential drive
+        self.sensor = snsr                      # sensor object
+        self.speaker = spkr                     # speaker object
+    
+    def start(self):
+        self.lnFwl.initialize()

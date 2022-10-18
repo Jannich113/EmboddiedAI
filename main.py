@@ -26,8 +26,8 @@ def main():
     sensors.initialize()  # initialize sensors with modes specified in config.py
     spkr = speaker.Speaker()  # init speaker with custom speaker class
     #spkr.play_boot()  # play boot sound
-    #spkr.speaker.play_file('dtmf.wav')
-    #spkr.speaker.play_file('crabRave.wav')
+    spkr.speaker.play_file('dtmf.wav')
+    #spkr.speaker.play_file('prank.wav')
     spkr.beep()
     linFol = lineFollow.LnFwl(sensors, diffDrive, spkr) # init line following with sensor and differential drive objects
     linFol.initialize() # initialize line following
@@ -39,8 +39,8 @@ def main():
     
     
     while True:
-        sensors.update(motors)  # update sensor values at start of each loop
-
+        #sensors.update_all(motors)  # update sensor values at start of each loop
+        sensors.update_Color()      # update color sensor values
         #-------------------------------------------------------------#
         # Test of gripper close
         #-------------------------------------------------------------#

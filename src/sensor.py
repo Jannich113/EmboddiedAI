@@ -26,7 +26,7 @@ class Sensor:
         self.sTouch.mode = MODE_TOUCH
         #self.sGyro.mode = MODE_GYRO
     
-    def update(self, mtr: motor.Motor):
+    def update_all(self, mtr: motor.Motor):
         self.uDist = self.sUltrasound.value()      # distance in cm from ultrasonic sensor
         self.uAngle = mtr.mUltrasonic.position      # angle in degrees from ultrasonic sensor
         self.gripperAngle = mtr.mGripper.position   # angle in degrees from gripper motor
@@ -35,6 +35,22 @@ class Sensor:
         self.tVal = self.sTouch.value()             # value from touch sensor, 0 when not pressed, 1 when pressed
         #self.gAng = self.sGyro.value()             # angle from gyro sensor
         
+        # Determine if left sensors see black
+        if (self.lRefLeft < INTENSENTY_BLACK):
+            self.lSeesBlack = True
+        else:
+            self.lSeesBlack = False
+        
+        # Determine if right sensors see black
+        if (self.lRefRight < INTENSENTY_BLACK):
+            self.rSeesBlack = True
+        else:
+            self.rSeesBlack = False
+
+    def update_Color(self):
+        self.lRefLeft = self.sColorLeft.value()     # reflected light from left color sensor
+        self.lRefRight = self.sColorRight.value()   # reflected light from right color sensor
+
         # Determine if left sensors see black
         if (self.lRefLeft < INTENSENTY_BLACK):
             self.lSeesBlack = True
