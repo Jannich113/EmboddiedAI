@@ -5,6 +5,7 @@ from ev3dev2.wheel import EV3EducationSetTire
 ## configuration of parameter ##
 #-------------------------------------------------------------#
 
+
 #-------------------------------------------------------------#
 # Lego specific parameters
 #-------------------------------------------------------------#
@@ -30,19 +31,29 @@ MOTOR_GRIPPER_PORT = OUTPUT_D
 #-------------------------------------------------------------#
 # Motor: 
 #-------------------------------------------------------------#
+# negative value = forward drive
+# positive value = backward drive
+#-------------------------------------------------------------#
 
 THRESHOLD_LEFT = 30
 THRESHOLD_RIGHT = 350
-BASE_SPEED = 255
+BASE_SPEED = -255
 ZERO_SPEED = 0
 TURN_SPEED = 50
+
 
 #-------------------------------------------------------------#
 # Ultrasonic sensor:
 #-------------------------------------------------------------#
 MODE_ULTRASOUND = 'US-DIST-CM'
-DIST_IGNORE = 50
-FRACTION = 10
+DIST_IGNORE = 200
+DIST_MAXED_OUT = 2550
+
+MAX_DEGRESS = 65
+DEGRESS_STEP = 1
+TOLERATED_DIV = 10
+NEEDED_POINTS = 6
+TURN_SPEED_US = 40
 
 #-------------------------------------------------------------#
 # Color sensor:
@@ -73,6 +84,15 @@ TIRE_DIST = 15 * STUD_MM # Distance between center of the wheels
 #-------------------------------------------------------------#
 GRIPPER_ROTS = 7 # Number of rotations to open/close the gripper
 GRIPPER_SPD_PERCENTAGE = 100 # Speed of the gripper motor in percentage
+
+#-------------------------------------------------------------#
+# RANSAC:
+#-------------------------------------------------------------#
+
+# the value choosen should consist with the SI unit of the Ultrasonic sensor
+THRESHOLD_FOR_INLIERS = 20 # mm = 2 cm
+MAX_ITERATIONS = 50 
+
 
 #-------------------------------------------------------------#
 # Main loop parameters:
