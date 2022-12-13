@@ -1,4 +1,4 @@
-from ev3dev2.sensor.lego import ColorSensor, UltrasonicSensor, TouchSensor
+from ev3dev2.sensor.lego import ColorSensor, UltrasonicSensor, TouchSensor, LightSensor
 from config import *
 import src.motor as motor
 
@@ -7,7 +7,7 @@ class Sensor:
         #self.sColorLeft  = ColorSensor(SENSOR_LIGHT_LEFT_PORT)
         #self.sColorRight = ColorSensor(SENSOR_LIGHT_RIGHT_PORT)
         self.sUltrasound = UltrasonicSensor(SENSOR_ULTRASOUND_PORT)
-        self.sColorCan = ColorSensor(SENSOR_TOUCH_PORT)
+        self.sColorCan = LightSensor(SENSOR_CAN_PORT)
         #self.sTouch = TouchSensor(SENSOR_TOUCH_PORT)
         #self.sGyro = GyroSensor(SENSOR_GYRO_PORT)
         self.uDist = 0 # distance in cm from ultrasonic sensor
@@ -23,7 +23,7 @@ class Sensor:
     def initialize(self):
         #self.sColorLeft.mode = MODE_COLOR
         #self.sColorRight.mode = MODE_COLOR
-        self.sColorCan.mode = MODE_COLOR
+        self.sColorCan.mode = 'REFLECT'
         self.sUltrasound.mode = MODE_ULTRASOUND
         #self.sTouch.mode = MODE_TOUCH
         #self.sGyro.mode = MODE_GYRO

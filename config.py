@@ -17,7 +17,7 @@ STUD_MM = 8 #Distance between two lego studs
 SENSOR_LIGHT_LEFT_PORT = INPUT_1
 SENSOR_LIGHT_RIGHT_PORT = INPUT_2
 SENSOR_ULTRASOUND_PORT = INPUT_3
-SENSOR_TOUCH_PORT = INPUT_4
+SENSOR_CAN_PORT = INPUT_4
 #SENSOR_GYRO_PORT = INPUT_x
 
 #-------------------------------------------------------------#
